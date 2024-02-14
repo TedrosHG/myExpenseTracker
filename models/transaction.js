@@ -13,6 +13,11 @@ const TransactionSchema = new mongoose.Schema({
     },
     amount: { type: Number, require: true},
     deposit: { type: Boolean, default:true ,require: true},
+    loan: { type: Boolean, default:false ,require: true},
+    friend: { 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'friend',
+    },
     reason: { type: String},
 },
 { timestamps: true}

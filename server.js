@@ -7,6 +7,8 @@ const auth = require('./middleware/authentication')
 const authRouter = require('./routes/auth')
 const userRouter = require('./routes/user')
 const bankRouter = require('./routes/bank')
+const friendRouter = require('./routes/friend')
+const transactionRouter = require('./routes/transaction')
 
 const app = express()
 
@@ -28,6 +30,8 @@ app.use(cors())
 app.use('/auth', authRouter)
 app.use('/user', auth, userRouter)
 app.use('/bank', auth, bankRouter)
+app.use('/loan', auth, friendRouter)
+app.use('/transaction', auth, transactionRouter)
 
 app.get('/',(req, res)=>{
     res.status(200).send('welcome to mybank, where it collects all your money transaction.')

@@ -1,6 +1,6 @@
 const Bank = require('../models/bank')
 const Transaction = require('../models/transaction')
-const {createBankValidaion, moneyExchangeValidaion} = require('../validations/bank')
+const {createBankValidaion} = require('../validations/bank')
 const CustomError = require('../utilits/customError')
 
 const createBank = async (req, res, next)=>{ 
@@ -34,7 +34,18 @@ const createBank = async (req, res, next)=>{
     }
 }
 
+const getAllBank = async (req, res, next)=>{ 
+    try {
+        const bank = await Bank.find({user:req.user.userId})
+        
+        return res.status(200).json({success:true, message:bank})
+    } catch (error) {
+        console.log(error)
+        next(error)
+    }
+}
 
+ 
 
 const deleteBank = async (req, res, next)=>{
     const {error, value} = changePassword.validate(req.body)
@@ -44,5 +55,6 @@ const deleteBank = async (req, res, next)=>{
 
 module.exports = {
     createBank,
+    getAllBank,
     deleteBank
 }
