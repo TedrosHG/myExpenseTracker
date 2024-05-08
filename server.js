@@ -30,7 +30,7 @@ app.use(cors())
 app.use('/auth', authRouter)
 app.use('/user', auth, userRouter)
 app.use('/bank', auth, bankRouter)
-app.use('/loan', auth, friendRouter)
+app.use('/friend', auth, friendRouter)
 app.use('/transaction', auth, transactionRouter)
 
 app.get('/',(req, res)=>{
@@ -53,7 +53,7 @@ app.use((error, req, res, next)=>{
     })
 })
 
-const port = process.env.PORT || 5000 
+const port = process.env.PORT || 5000
 
 
 
